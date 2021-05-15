@@ -13,4 +13,8 @@ class Topic(titleRaw: String) {
     override fun hashCode(): Int {
         return title.hashCode()
     }
+
+    fun hasTitle(topic: String): Boolean {
+        return title == topic.lowercase()
+    }
 }

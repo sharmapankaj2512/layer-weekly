@@ -13,4 +13,7 @@ class AddTopicsToMagazineEdition(private val editionRepository: MagazineEditionR
     }
 }
 
-data class AddTopicsToMagazineEditionRequest(val id: Id, val number: String, val topics: Set<String>)
+data class AddTopicsToMagazineEditionRequest(
+    val id: Id,
+    val number: String,
+    val topics: Set<String>)

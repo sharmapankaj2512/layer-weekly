@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 class MagazineEditionTest {
     @Test
     fun addsValidTopics() {
-        val edition = MagazineEditionBuilder().build()
+        val edition = MagazineEditionBuilder(topics = setOf("sports")).build()
 
         edition.add(setOf("sports"))
         edition.add(setOf("business"))
@@ -17,7 +17,7 @@ class MagazineEditionTest {
 
     @Test
     fun doesNotAddDuplicateTopic() {
-        val edition = MagazineEditionBuilder().build()
+        val edition = MagazineEditionBuilder(topics = setOf("sports")).build()
 
         edition.add(setOf("sports"))
         edition.add(setOf("sports", "business"))
@@ -27,7 +27,7 @@ class MagazineEditionTest {
 
     @Test
     fun ignoresInvalidTopics() {
-        val edition = MagazineEditionBuilder().build()
+        val edition = MagazineEditionBuilder(topics = setOf("sports")).build()
 
         edition.add(setOf("sports"))
         edition.add(setOf(""))
