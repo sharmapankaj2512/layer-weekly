@@ -1,6 +1,12 @@
 package com.pankaj.layerweekly.domain
 
-class MagazineEdition(val magazine: Magazine, val number: String): Aggregate() {
+import java.util.*
+
+class MagazineEdition(
+    val magazine: Magazine,
+    val number: String,
+    override val id: Id = Id(UUID.randomUUID()),
+) : Aggregate(id) {
     val topics = mutableSetOf<Topic>()
 
     fun add(topics: Set<String>) {

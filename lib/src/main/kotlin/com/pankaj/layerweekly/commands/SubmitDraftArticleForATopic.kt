@@ -14,7 +14,11 @@ class SubmitDraftArticleForATopic(
     fun execute(request: SubmitDraftArticleForATopicRequest) {
         editionRepository.find(request.id)?.let { edition ->
             val topic = Topic(request.topic)
-            val article = Article(request.title, request.content, topic, edition)
+            val article = Article(
+                title = request.title,
+                content = request.content,
+                topic = topic,
+                edition = edition)
             articleRepository.create(article)
         } ?: throw IllegalArgumentException(Messages.INVALID_MESSAGE_EDITION)
     }

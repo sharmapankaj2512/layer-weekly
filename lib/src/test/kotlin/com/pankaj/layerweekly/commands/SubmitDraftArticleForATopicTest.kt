@@ -26,7 +26,7 @@ class SubmitDraftArticleForATopicTest {
 
         @BeforeEach
         fun beforeEach() {
-            every { editionRepository.find(edition.id()) } returns edition
+            every { editionRepository.find(edition.id) } returns edition
         }
 
         @Nested
@@ -50,7 +50,7 @@ class SubmitDraftArticleForATopicTest {
 
                     command.execute(
                         SubmitDraftArticleForATopicRequest(
-                            edition.id(),
+                            edition.id,
                             topic,
                             title,
                             content
@@ -87,7 +87,7 @@ class SubmitDraftArticleForATopicTest {
                     val exception = assertThrows(IllegalArgumentException::class.java) {
                         command.execute(
                             SubmitDraftArticleForATopicRequest(
-                                edition.id(),
+                                edition.id,
                                 topic,
                                 title,
                                 content

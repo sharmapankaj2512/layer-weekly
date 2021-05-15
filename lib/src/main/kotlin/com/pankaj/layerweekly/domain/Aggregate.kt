@@ -1,13 +1,6 @@
 package com.pankaj.layerweekly.domain
 
-import java.util.*
-
-interface Entity {
-    fun id(): Id
-}
-
-open class Aggregate : Entity {
-    private val id = Id(UUID.randomUUID())
+abstract class Aggregate(id: Id) : Entity(id) {
     val events = mutableSetOf<DomainEvent>()
 
     fun raise(events: List<DomainEvent>) {
@@ -16,9 +9,5 @@ open class Aggregate : Entity {
 
     fun raise(event: DomainEvent) {
         this.events.add(event)
-    }
-
-    override fun id(): Id {
-        return id
     }
 }
