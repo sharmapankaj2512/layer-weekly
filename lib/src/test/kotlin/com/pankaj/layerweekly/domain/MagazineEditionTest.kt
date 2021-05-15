@@ -2,11 +2,13 @@ package com.pankaj.layerweekly.domain
 
 import com.pankaj.layerweekly.builders.MagazineEditionBuilder
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
+@DisplayName("MagazineEdition")
 class MagazineEditionTest {
     @Test
-    fun addsValidTopics() {
+    fun acceptsValidTopics() {
         val edition = MagazineEditionBuilder(topics = setOf("sports")).build()
 
         edition.add(setOf("sports"))
@@ -16,7 +18,7 @@ class MagazineEditionTest {
     }
 
     @Test
-    fun doesNotAddDuplicateTopic() {
+    fun ignoresDuplicateTopic() {
         val edition = MagazineEditionBuilder(topics = setOf("sports")).build()
 
         edition.add(setOf("sports"))
@@ -26,7 +28,7 @@ class MagazineEditionTest {
     }
 
     @Test
-    fun ignoresInvalidTopics() {
+    fun ignoresEmptySpacesAsTopics() {
         val edition = MagazineEditionBuilder(topics = setOf("sports")).build()
 
         edition.add(setOf("sports"))

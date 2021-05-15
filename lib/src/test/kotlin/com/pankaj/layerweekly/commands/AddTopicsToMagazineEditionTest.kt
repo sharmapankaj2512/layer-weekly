@@ -48,7 +48,7 @@ class AddTopicsToMagazineEditionTest {
             }
 
             @Test
-            fun thenTheTopicsAreLinkedTheEdition() {
+            fun thenTheTopicsAreLinkedToTheEdition() {
                 val expected = setOf(Topic("cricket"), Topic("business"))
                 val actual = capturedEdition.captured.topics
 
