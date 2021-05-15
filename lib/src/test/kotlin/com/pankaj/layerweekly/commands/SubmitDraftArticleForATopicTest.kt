@@ -6,6 +6,7 @@ import com.pankaj.layerweekly.domain.DraftArticleSubmitted
 import com.pankaj.layerweekly.domain.Id
 import com.pankaj.layerweekly.repositories.ArticleRepository
 import com.pankaj.layerweekly.repositories.MagazineEditionRepository
+import com.pankaj.layerweekly.shared.Messages
 import io.mockk.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
@@ -93,7 +94,7 @@ class SubmitDraftArticleForATopicTest {
                             )
                         )
                     }
-                    assertEquals("Topic is not available for the given magazine edition", exception.message)
+                    assertEquals(Messages.TOPIC_NOT_AVALIABLE_IN_EDITION, exception.message)
                 }
             }
 
@@ -120,7 +121,7 @@ class SubmitDraftArticleForATopicTest {
                             )
                         )
                     }
-                    assertEquals("Invalid magazine edition", exception.message)
+                    assertEquals(Messages.INVALID_MESSAGE_EDITION, exception.message)
                 }
             }
         }

@@ -2,6 +2,7 @@ package com.pankaj.layerweekly.commands
 
 import com.pankaj.layerweekly.domain.Id
 import com.pankaj.layerweekly.repositories.MagazineEditionRepository
+import com.pankaj.layerweekly.shared.Messages
 import java.lang.IllegalArgumentException
 
 class AddTopicsToMagazineEdition(private val editionRepository: MagazineEditionRepository) {
@@ -9,7 +10,7 @@ class AddTopicsToMagazineEdition(private val editionRepository: MagazineEditionR
         editionRepository.find(request.id, request.number)?.let { edition ->
             edition.add(request.topics)
             editionRepository.update(edition)
-        } ?: throw IllegalArgumentException("Magazine edition does not exist")
+        } ?: throw IllegalArgumentException(Messages.MAGAZINE_DOES_NOT_EXIST)
     }
 }
 

@@ -6,6 +6,7 @@ import com.pankaj.layerweekly.domain.MagazineEdition
 import com.pankaj.layerweekly.domain.Topic
 import com.pankaj.layerweekly.domain.TopicAdded
 import com.pankaj.layerweekly.repositories.MagazineEditionRepository
+import com.pankaj.layerweekly.shared.Messages
 import io.mockk.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
@@ -85,7 +86,7 @@ class AddTopicsToMagazineEditionTest {
                         )
                     )
                 }
-                assertEquals(exception.message, "Magazine edition does not exist")
+                assertEquals(exception.message, Messages.MAGAZINE_DOES_NOT_EXIST)
             }
         }
     }

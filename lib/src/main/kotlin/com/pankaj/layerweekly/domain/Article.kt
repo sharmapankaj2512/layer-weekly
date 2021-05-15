@@ -1,5 +1,7 @@
 package com.pankaj.layerweekly.domain
 
+import com.pankaj.layerweekly.shared.Messages
+
 class Article(
     val title: String,
     val content: String,
@@ -8,7 +10,7 @@ class Article(
 ) : Aggregate() {
 
     init {
-        require(edition.has(topic)) { "Topic is not available for the given magazine edition" }
+        require(edition.has(topic)) { Messages.TOPIC_NOT_AVALIABLE_IN_EDITION }
 
         raise(DraftArticleSubmitted(this))
     }

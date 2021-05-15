@@ -5,6 +5,7 @@ import com.pankaj.layerweekly.domain.Id
 import com.pankaj.layerweekly.domain.Topic
 import com.pankaj.layerweekly.repositories.ArticleRepository
 import com.pankaj.layerweekly.repositories.MagazineEditionRepository
+import com.pankaj.layerweekly.shared.Messages
 
 class SubmitDraftArticleForATopic(
     private val articleRepository: ArticleRepository,
@@ -15,7 +16,7 @@ class SubmitDraftArticleForATopic(
             val topic = Topic(request.topic)
             val article = Article(request.title, request.content, topic, edition)
             articleRepository.create(article)
-        } ?: throw IllegalArgumentException("Invalid magazine edition")
+        } ?: throw IllegalArgumentException(Messages.INVALID_MESSAGE_EDITION)
     }
 }
 
