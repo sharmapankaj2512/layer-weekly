@@ -2,7 +2,6 @@ package com.pankaj.layerweekly.commands
 
 import com.pankaj.layerweekly.domain.Article
 import com.pankaj.layerweekly.domain.Id
-import com.pankaj.layerweekly.domain.Topic
 import com.pankaj.layerweekly.repositories.ArticleRepository
 import com.pankaj.layerweekly.repositories.MagazineEditionRepository
 import com.pankaj.layerweekly.shared.Messages
@@ -13,12 +12,12 @@ class SubmitDraftArticleForATopic(
 ) {
     fun execute(request: SubmitDraftArticleForATopicRequest) {
         editionRepository.find(request.id)?.let { edition ->
-            val topic = Topic(request.topic)
             val article = Article(
                 title = request.title,
                 content = request.content,
-                topic = topic,
-                edition = edition)
+                topics = request.topics,
+                edition = edition
+            )
             articleRepository.create(article)
         } ?: throw IllegalArgumentException(Messages.INVALID_MESSAGE_EDITION)
     }
@@ -26,7 +25,7 @@ class SubmitDraftArticleForATopic(
 
 data class SubmitDraftArticleForATopicRequest(
     val id: Id,
-    val topic: String,
+    val topics: Set<String>,
     val title: String,
     val content: String
 )

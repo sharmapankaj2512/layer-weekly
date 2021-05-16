@@ -17,7 +17,7 @@ class MagazineEdition(
             .also { raise(it) }
     }
 
-    fun has(topic: Topic): Boolean {
-        return topics.contains(topic)
+    fun has(topics: Set<Topic>): Boolean {
+        return this.topics.containsAll(topics)
     }
 }

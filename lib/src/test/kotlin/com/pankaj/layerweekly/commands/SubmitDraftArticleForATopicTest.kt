@@ -39,7 +39,7 @@ class SubmitDraftArticleForATopicTest {
 
             @Nested
             inner class WhenADraftArticleForTheSportsTopicIsSubmitted {
-                private val topic = "sports"
+                private val topics = setOf("sports")
                 private val title = "Manchester City win English Premier League"
                 private val content = "Manchester City were crowned champions of England once again ..."
                 private val articleCaptured = slot<Article>()
@@ -51,7 +51,7 @@ class SubmitDraftArticleForATopicTest {
                     command.execute(
                         SubmitDraftArticleForATopicRequest(
                             edition.id,
-                            topic,
+                            topics,
                             title,
                             content
                         )
@@ -65,7 +65,7 @@ class SubmitDraftArticleForATopicTest {
                     assertEquals(title, actual.title)
                     assertEquals(content, actual.content)
                     assertTrue(actual.hasEdition(edition))
-                    assertTrue(actual.hasTopic(topic))
+                    assertTrue(actual.hasTopic(topics.first()))
                 }
 
                 @Test
@@ -78,7 +78,7 @@ class SubmitDraftArticleForATopicTest {
 
             @Nested
             inner class WhenADraftArticleForNonExistingBusinessTopicIsSubmitted {
-                private val topic = "science"
+                private val topics = setOf("science")
                 private val title = "Manchester City win English Premier League"
                 private val content = "Manchester City were crowned champions of England once again ..."
 
@@ -88,7 +88,7 @@ class SubmitDraftArticleForATopicTest {
                         command.execute(
                             SubmitDraftArticleForATopicRequest(
                                 edition.id,
-                                topic,
+                                topics,
                                 title,
                                 content
                             )
@@ -100,7 +100,7 @@ class SubmitDraftArticleForATopicTest {
 
             @Nested
             inner class WhenADraftArticleForNonExistingSecondEditionIsSubmitted {
-                private val topic = "science"
+                private val topics = setOf("science")
                 private val title = "Manchester City win English Premier League"
                 private val content = "Manchester City were crowned champions of England once again ..."
 
@@ -115,7 +115,7 @@ class SubmitDraftArticleForATopicTest {
                         command.execute(
                             SubmitDraftArticleForATopicRequest(
                                 Id(UUID.randomUUID()),
-                                topic,
+                                topics,
                                 title,
                                 content
                             )
