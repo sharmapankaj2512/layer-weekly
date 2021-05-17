@@ -36,4 +36,8 @@ class Article(
     fun hasTopic(topic: String): Boolean {
         return this.topics.any { it.hasTitle(topic) }
     }
+
+    fun newChangeRequest(suggestedChange: String): ChangeRequest {
+        return ChangeRequest(article = this, content = suggestedChange)
+    }
 }
